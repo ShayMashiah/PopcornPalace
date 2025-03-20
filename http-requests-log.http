@@ -8,7 +8,7 @@ POST http://localhost:8080/movies/
 Content-Type: application/json
 
 {
-  "title": "BAZ",
+  "title": "bbb",
   "genre": "Crime",
   "duration": 175,
   "rating": 9.2,
@@ -17,13 +17,19 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/movies/1
+PUT http://localhost:8080/movies/update/bbb
 Content-Type: application/json
 
 {
-  "title": "BAZ",
+  "title": "AAAAAAAA",
   "genre": "Crime",
   "duration": 175,
   "rating": 9.2,
   "releaseYear": 1972
 }
+
+###
+DELETE http://localhost:8080/movies/AAAAAAAA
+
+###
+DELETE http://localhost:8080/movies/

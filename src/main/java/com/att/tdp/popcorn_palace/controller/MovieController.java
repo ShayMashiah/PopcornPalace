@@ -4,7 +4,6 @@ package com.att.tdp.popcorn_palace.controller;
 import com.att.tdp.popcorn_palace.entity.Movie;
 import com.att.tdp.popcorn_palace.service.MovieService;
 
-import jakarta.persistence.PostUpdate;
 import lombok.extern.slf4j.Slf4j;
 
 import com.att.tdp.popcorn_palace.DTO.MoviesDto;
@@ -19,7 +18,8 @@ import java.util.List;
 public class MovieController {
     @Autowired
     private MovieService movieService;
-    
+   
+
     @GetMapping("/all")
     public ResponseEntity<List<Movie>> getAllMovies() {
         return ResponseEntity.ok(movieService.getAllMovies());
@@ -30,12 +30,21 @@ public class MovieController {
         return ResponseEntity.ok(movieService.addMovie(movie));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id, @RequestBody MoviesDto movieDto) {
-        log.info("Searching for movie with title controller: {}", id);
-        movieService.updateMovie(id, movieDto);
+    @PutMapping("update/{movieTitle}")
+    public ResponseEntity<Movie> updateMovie(@PathVariable("movieTitle") String movieTitle, @RequestBody MoviesDto movieDto) {
+        movieService.updateMovie(movieTitle, movieDto);
         return ResponseEntity.ok(null);
-
     }
-    
+
+    @DeleteMapping("/{movieTitle}")
+    public ResponseEntity<Movie> deleteMovie(@PathVariable("movieTitle") String movieTitle) {
+        movieService.deleteMovie(movieTitle);
+        return ResponseEntity.ok(null);
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<Movie> deleteAllMovies() {
+        movieService.deleteAllMovies();
+        return ResponseEntity.ok(null);
+    }
 } 

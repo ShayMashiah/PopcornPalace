@@ -1,0 +1,29 @@
+###
+
+GET http://localhost:8080/movies/all
+
+###
+
+POST http://localhost:8080/movies/
+Content-Type: application/json
+
+{
+  "title": "BAZ",
+  "genre": "Crime",
+  "duration": 175,
+  "rating": 9.2,
+  "releaseYear": 1972
+}
+
+###
+
+PUT http://localhost:8080/movies/1
+Content-Type: application/json
+
+{
+  "title": "BAZ",
+  "genre": "Crime",
+  "duration": 175,
+  "rating": 9.2,
+  "releaseYear": 1972
+}
